@@ -9,13 +9,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    height: 100vh;
     background-color: rgb(195, 195, 195);
 }
 
 .container {
+    width: 30%;
     background-color: white;
-    width: 40%;
     border-radius: 10px;
     box-shadow: 0px 0px 120px 0px rgba(0, 0, 0, 0.5); /* Horizontal offset, Vertical offset, Blur radius, Spread radius, Color */
 }
@@ -25,22 +25,22 @@ body {
 /* ---------------- Sign up form */
 /* ---------------- Sign up form */
 
-.form {
+.form-signup {
     padding: 25px 30px;
 }
 
-.form header {
+.form-signup header {
     font-size: 25px;
     font-weight: 600;
     padding-bottom: 10px;
-    border-bottom: 2px solid rgb(66, 66, 66);
+    border-bottom: 1px solid rgb(66, 66, 66);
 }
 
-.form form {
+.form-signup form {
    margin: 20px 0; 
 }
 
-.form form .error-txt {
+.form-signup .error-txt {
     color: red;
     background: rgb(249, 125, 125);
     padding: 8px 10px;
@@ -50,38 +50,110 @@ body {
     border: 1px solid rgb(249, 125, 125);
 }
 
-.form form .field {
+.form-signup form div {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
 
-.form form .name-details {
-    display: flex;
-}
+.form-signup form label {
+    margin-bottom: 10px;
+} 
 
-.form form .name-details .field:first-child {
-    width: 50%;
-    margin-right: 10px;
-}
-
-.form form .name-details .field:last-child {
-    width: 50%;
-    margin-left: 10px;
-}
-
-.form form .field label {
-    margin-bottom: 15px;
-}
-
-.form form .field input {
+.form-signup form input {
+    height: 35px;
     outline: none;
-}
-
-.form form .input input {
-    height: 40px;
     font-size: 16px;
     padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.form-signup form .name-details {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form-signup form .name-details div:first-child {
+    width: 45%;
+}
+
+.form-signup form .name-details div:last-child {
+    width: 45%;
+}
+
+.form-signup .link {
+
+}
+
+
+
+/* ---------------- User list page */
+/* ---------------- User list page */
+/* ---------------- User list page */
+/* ---------------- User list page */
+
+
+.users header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(152, 152, 152);
+    padding: 20px 30px;
+}
+
+.users .content {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+} 
+
+.users img {
+    border-radius: 30px;
+    width: 15%;
+}
+
+.users .content .details {
+    margin-left: 25px;
+} 
+
+.users .content .details span{
+    font-size: 23px;
+} 
+
+.users .logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(53, 53, 53);
+    color: white;
+    border-radius: 5px;
+    width: 40%;
+    height: 40px;
+}
+
+.users .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.users .search input {
+    width: 80%;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid rgb(152, 152, 152);
+    padding-left: 10px; /* Adjust the value as needed */
+}
+
+.users .search button {
+    width: 8%;
+    height: 30px;
+    color: white;
+    background-color: rgb(53, 53, 53);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
