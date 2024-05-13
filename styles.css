@@ -142,18 +142,48 @@ body {
 }
 
 .users .search input {
-    width: 80%;
-    height: 30px;
+    width: 72%;
+    height: 35px;
     border-radius: 2px;
     border: 1px solid rgb(152, 152, 152);
     padding-left: 10px; /* Adjust the value as needed */
 }
 
 .users .search button {
-    width: 8%;
-    height: 30px;
+    width: 10%;
+    height: 35px;
     color: white;
     background-color: rgb(53, 53, 53);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
+
+
+.users-list {
+    padding: 20px 40px;
+}
+
+.users-list a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 8%;
+}
+
+.users-list a .content {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.users-list a .status-dot {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4%;
+}
+
