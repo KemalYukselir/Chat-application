@@ -35,6 +35,16 @@ p {
     padding: 25px 30px;
 }
 
+.form-signup .error-txt {
+    color: red;
+    background: rgb(249, 125, 125);
+    padding: 8px 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(249, 125, 125);
+}
+
 .form-signup header {
     font-size: 25px;
     font-weight: 600;
@@ -46,17 +56,9 @@ p {
    margin: 20px 0; 
 }
 
-.form-signup .error-txt {
-    color: red;
-    background: rgb(249, 125, 125);
-    padding: 8px 10px;
-    text-align: center;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    border: 1px solid rgb(249, 125, 125);
-}
 
 .form-signup form div {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
@@ -73,6 +75,20 @@ p {
     padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.form-signup form i{
+    position: absolute;
+    right: 15px;
+    color: #ccc;
+    top: 70%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.form-signup form i.active::before{
+    color: #ccc;
+    content: "\f070";
 }
 
 .form-signup form .name-details {

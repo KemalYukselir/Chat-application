@@ -84,11 +84,6 @@
         </section>
     </div>
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var chatBox = document.getElementById('chat-box');
-        chatBox.scrollTop = chatBox.scrollHeight;
-    });
-</script>
+    <script src="js/chatarea.js"></script>
 </html>
 
