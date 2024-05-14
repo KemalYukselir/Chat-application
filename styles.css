@@ -3,6 +3,7 @@
     padding: 0;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
+    color: inherit;
 }
 
 body {
@@ -13,12 +14,17 @@ body {
     background-color: rgb(195, 195, 195);
 }
 
+p {
+    color: rgb(126, 126, 126);
+}
+
 .container {
     width: 30%;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 120px 0px rgba(0, 0, 0, 0.5); /* Horizontal offset, Vertical offset, Blur radius, Spread radius, Color */
 }
+
 
 /* ---------------- Sign up form */
 /* ---------------- Sign up form */
@@ -100,7 +106,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgb(152, 152, 152);
+    border-bottom: 1px solid rgb(205, 205, 205);
     padding: 20px 30px;
 }
 
@@ -158,8 +164,6 @@ body {
     border-bottom-right-radius: 5px;
 }
 
-
-
 .users-list {
     padding: 20px 40px;
 }
@@ -169,7 +173,9 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding-bottom: 8%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    border-bottom: 1px inset rgb(205, 205, 205);
 }
 
 .users-list a .content {
@@ -187,3 +193,71 @@ body {
     padding-right: 4%;
 }
 
+.users-list .fas {
+    color: green;
+}
+
+/* ---------------- Chat area page */
+/* ---------------- Chat area page */
+/* ---------------- Chat area page */
+/* ---------------- Chat area page */
+
+.chat-area header {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.chat-box {
+    padding: 20px 30px;
+    background-color: rgb(221, 221, 221);
+}
+
+.chat-area .content {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+} 
+
+.chat-area img {
+    border-radius: 30px;
+    width: 14%;
+}
+
+.chat-area .fa-arrow-left {
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.chat-area .content .details {
+    margin-left: 25px;
+} 
+
+.chat-area .content .details span{
+    font-size: 23px;
+} 
+
+.chat-box p {
+    color: white;
+    padding: 8px 16px;
+}
+
+.chat-box .outgoing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    border-bottom-right-radius: 0px;
+    background-color: rgb(66, 66, 66);
+    margin-left: auto;
+    max-width: calc(100% - 200px);
+} 
+
+.chat-box .incoming {
+    background-color: rgb(132, 132, 132);
+
+} 
