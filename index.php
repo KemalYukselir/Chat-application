@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <section class="form-signup">
+        <section class="form-details">
             <header>Chat Application App</header>
             <form action="#">
                 <div class="error-txt">Error!</div>
@@ -36,7 +36,7 @@
                     <input type="submit" value="Continue to Chat"/>
                 </div>
             </form>
-            <div class="link"> Already signed up? <a href="#">Login now</a></div>
+            <div class="link"> Already signed up? <a href="login.php">Login now</a></div>
         </section>
     </div>
 </body>
