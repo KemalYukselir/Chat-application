@@ -19,7 +19,7 @@
                 echo "$email already exists";
             } else {
                 $status = "Online";
-                $userUniqueId = rand(time(), 10000000000000000);
+                $userUniqueId = uniqid();
 
                 $sql2 = mysqli_query($connection, "INSERT INTO users (unique_id,fname,lname,email,password,status)
                  VALUES ('{$userUniqueId}', '{$fname}', '{$lname}', '{$email}', '{$password}', '{$status}')");
