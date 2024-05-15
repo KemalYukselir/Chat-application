@@ -30,5 +30,5 @@
         </section>
     </div>
 </body>
-<script src="JS/passwordShowHide.js"></script>
+<script src="js/passwordShowHide.js"></script>
 </html>

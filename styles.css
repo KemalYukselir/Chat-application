@@ -36,6 +36,7 @@ p {
 }
 
 .form-signup .error-txt {
+    display: none;
     color: red;
     background: rgb(249, 125, 125);
     padding: 8px 10px;
@@ -261,8 +262,6 @@ p {
 .chat-area .content .details span{
     font-size: 23px;
 } 
-
-
 
 .chat-box .outgoing {
     margin-top: 5%;

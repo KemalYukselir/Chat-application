@@ -2,6 +2,7 @@ const passwordField = document.querySelector(".form-signup input[type='password'
 toggleButton = document.querySelector(".form-signup i");
 
 toggleButton.onclick = ()=>{
+    console.log("test");
     if (passwordField.type == 'password') {
         passwordField.type = 'text';
         toggleButton.classList.remove("active")

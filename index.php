@@ -16,20 +16,20 @@
                 <div class="name-details">
                     <div>
                         <label> First Name </label>
-                        <input type="text" placeholder="First Name"/>
+                        <input type="text" name="fname" placeholder="First Name" required/>
                     </div>
                     <div>
                         <label> Last Name </label>
-                        <input type="text" placeholder="Last Name"/>
+                        <input type="text" name="lname" placeholder="Last Name" required/>
                     </div>
                 </div>
                 <div>
                     <label> Email Address </label>
-                    <input type="text" placeholder="Email"/>
+                    <input type="text" name="email" placeholder="Email" required/>
                 </div>
                 <div>
                     <label> Password </label>
-                    <input type="password" placeholder="Password"/>
+                    <input type="password" name="password" placeholder="Password" required/>
                     <i class="fas fa-eye"></i>
                 </div>
                 <div>
@@ -40,7 +40,6 @@
         </section>
     </div>
 </body>
-<script src="JS/passwordShowHide.js"></script>
-<script src="JS/signup.js"></script>
-
+<script src="js/passwordShowHide.js"></script>
+<script src="js/signup.js"></script>
 </html>
