@@ -1,5 +1,5 @@
-const passwordField = document.querySelector(".form-signup input[type='password']")
-toggleButton = document.querySelector(".form-signup i");
+const passwordField = document.querySelector(".form-details input[type='password']")
+toggleButton = document.querySelector(".form-details i");
 
 toggleButton.onclick = ()=>{
     console.log("test");

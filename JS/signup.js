@@ -1,6 +1,6 @@
-const form = document.querySelector(".form-signup form");
-const continueButton = form.querySelector(".form-signup input[type='submit']");
-const errorText = form.querySelector(".form-signup .error-txt");
+const form = document.querySelector(".form-details form");
+const continueButton = form.querySelector(".form-details input[type='submit']");
+const errorText = form.querySelector(".form-details .error-txt");
 
 form.onsubmit = (e) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ continueButton.onclick = ()=>{
     xhr.onload = ()=> {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if(xhr.status === 200) {
-                let data = xhr.response;
+                let data = xhr.responseText.trim(); // Trim the response
                 if(data == "Success") {
                     location.href = 'users.php'
                 } else {
