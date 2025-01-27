@@ -1,3 +1,5 @@
+npm run dev
+
 # Tech Stack
 Frontend (React)
 React.js (Vite) – Fast and lightweight.
