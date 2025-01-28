@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { db, sendMessageToDatabase, subscribeToMessages } from "../firebase";
 
 interface Message {
-  id: number;
+  id: string;
   text: string;
   user: string;
 }
@@ -12,17 +13,18 @@ interface ChatProps {
 }
 
 export default function Chat({ username, onLogout }: ChatProps) {
-  const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: "Hello! 👋", user: "Alice" },
-    { id: 2, text: "Hey there! 😊", user: "Bob" },
-  ]);
-
+  const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
 
-  const sendMessage = () => {
-    if (!newMessage.trim()) return;
-    setMessages([...messages, { id: messages.length + 1, text: newMessage, user: username }]);
-    setNewMessage("");
+  // Fetch messages in real-time
+  useEffect(() => {
+    const subscribe = subscribeToMessages(setMessages);
+    return () => subscribe;
+  }, []);
+
+  const sendMessage = async () => {
+    await sendMessageToDatabase(username, newMessage);
+    setNewMessage(""); // Clear input after sending
   };
 
   return (
