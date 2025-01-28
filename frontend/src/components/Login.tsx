@@ -1,50 +1,42 @@
-import { useState } from "react";
+import { signInWithGoogle } from "../firebase";
 
 interface LoginProps {
-  onLogin: (username: string, password: string) => void;
+  onLogin: (username: string, token: string) => void;
 }
 
 export default function Login({ onLogin }: LoginProps) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const handleLogin = async () => {
+    try {
+      const user = await signInWithGoogle();
+      
+      // Send the Firebase ID Token to FastAPI for verification
+      const response = await fetch("http://127.0.0.1:8000/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id_token: user.token }),
+      });
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent page reload
-    if (!username.trim() || !password.trim()) {
-      setError("Username and password are required.");
-      return;
+      if (!response.ok) throw new Error("Authentication failed");
+
+      const data = await response.json();
+      const { display_name } = data.user;
+
+      // Store authenticated session
+      onLogin(display_name, user.token);
+    } catch (err) {
+      console.error("Login failed:", err);
     }
-    setError(""); // Clear any previous errors
-    onLogin(username, password);
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
         <h2>Login</h2>
-        {error && <p className="login-error">{error}</p>}
-        <form onSubmit={handleLogin}>
-          <input
-            type="text"
-            className="login-input"
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            aria-label="Username"
-          />
-          <input
-            type="password"
-            className="login-input"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            aria-label="Password"
-          />
-          <button type="submit" className="login-button">
-            Login
-          </button>
-        </form>
+        <button className="login-button" onClick={handleLogin}>
+          Sign in with Google
+        </button>
       </div>
     </div>
   );
