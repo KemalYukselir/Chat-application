@@ -1,12 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, set, onValue } from "firebase/database";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCNtczdmnPls2ekZTUU840pn8WxA5Dpa-E",
   authDomain: "chat-app-61711.firebaseapp.com",
@@ -20,48 +14,21 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
+export const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
-// Function to send a message to Realtime Database
-export const sendMessageToDatabase = async (username: string, text: string) => {
-  if (!text.trim()) return;
-
-  try {
-    const messagesRef = ref(db, "messages"); // Reference to "messages" node
-    const newMessageRef = push(messagesRef); // Create a new child key
-    await set(newMessageRef, {
-      user: username,
-      text,
-      timestamp: Date.now(), // Use Date.now() for timestamp
-    });
-
-    console.log("✅ Message sent successfully!");
-  } catch (error) {
-    console.error("❌ Error sending message:", error);
-  }
+// Function to Sign In with Google
+export const signInWithGoogle = async () => {
+  const result = await signInWithPopup(auth, provider);
+  const token = await result.user.getIdToken(); // Get Firebase ID Token
+  return {
+    displayName: result.user.displayName,
+    email: result.user.email,
+    token: token
+  };
 };
 
-// Function to subscribe to messages in Realtime Database
-export const subscribeToMessages = (callback: (messages: any[]) => void) => {
-  const messagesRef = ref(db, "messages");
-  let messagesArray;
-
-  onValue(messagesRef, (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      messagesArray = Object.keys(data).map((key) => ({
-        id: key,
-        ...data[key],
-      }));
-      console.log("📩 Messages received from Realtime Database:", messagesArray);
-      callback(messagesArray);
-    } else {
-      console.log("ℹ No messages found in Realtime Database.");
-      callback([]);
-    }
-  }, (error) => {
-    console.error("❌ Error receiving messages:", error);
-  });
-
-  return messagesArray
+// Function to Sign Out
+export const logout = async () => {
+  await signOut(auth);
 };
