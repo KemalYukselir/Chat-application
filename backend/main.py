@@ -5,9 +5,15 @@ from pydantic import BaseModel
 from typing import List, Optional
 import time
 
+from dotenv import load_dotenv
+import os, json
+
+# Load environment variables from .env
+load_dotenv()
+
 # 🔥 Initialize Firebase Admin SDK
-cred = credentials.Certificate("firebase_admin_key.json")  # Firebase Admin SDK JSON
-firebase_admin.initialize_app(cred, {
+firebase_creds = json.loads(os.getenv("FIREBASE_ADMIN_KEY"))
+firebase_admin.initialize_app(firebase_creds, {
     'databaseURL': 'https://chat-app-61711-default-rtdb.firebaseio.com'
 })
 
