@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { db, sendMessageToDatabase, subscribeToMessages } from "../firebase";
+import { sendMessageToBackend, getMessagesFromBackend } from "../api";
 
 interface Message {
-  id: string;
-  text: string;
   user: string;
+  text: string;
+  timestamp: number;
 }
 
 interface ChatProps {
@@ -16,15 +16,20 @@ export default function Chat({ username, onLogout }: ChatProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
 
-  // Fetch messages in real-time
+  // ✅ Fetch messages from FastAPI
   useEffect(() => {
-    const subscribe = subscribeToMessages(setMessages);
-    return () => subscribe;
+    async function fetchMessages() {
+      const data = await getMessagesFromBackend();
+      setMessages(data);
+    }
+    fetchMessages();
   }, []);
 
   const sendMessage = async () => {
-    await sendMessageToDatabase(username, newMessage);
+    await sendMessageToBackend(username, newMessage);
     setNewMessage(""); // Clear input after sending
+    const updatedMessages = await getMessagesFromBackend(); // Refresh messages
+    setMessages(updatedMessages);
   };
 
   return (
@@ -34,8 +39,8 @@ export default function Chat({ username, onLogout }: ChatProps) {
         <button onClick={onLogout}>Logout</button>
       </header>
       <div className="chat-messages">
-        {messages.map((msg) => (
-          <div key={msg.id} className="message">
+        {messages.map((msg, index) => (
+          <div key={index} className="message">
             <strong>{msg.user}: </strong> {msg.text}
           </div>
         ))}
